@@ -1,0 +1,67 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="おっぱいマスター.MainWindow"
+        Title="OM" Height="480" Width="640" KeyDown="Window_KeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Button x:Name="button_open" Content="開く(O)" HorizontalAlignment="Right" Width="100" VerticalAlignment="Center" Height="40" Click="button_open_Click" />
+            <Button x:Name="button_export" Content="エクスポート(E)" HorizontalAlignment="Left" Width="100" VerticalAlignment="Center" Height="40" Click="button_export_Click" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                
+                    
+                <Grid Grid.Row="0">
+                    <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                        <Grid Name="grid_image" MouseDown="grid_image_MouseDown" MouseMove="grid_image_MouseMove" MouseUp="grid_image_MouseUp">
+                    
+            	        <Image x:Name="image_preview" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        </Grid>
+
+                    </ScrollViewer>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="button_prev" Grid.Column="0" Content="前へ(Z)" HorizontalAlignment="Center" Margin="0" Width="100" Height="40" Click="button_prev_Click" VerticalAlignment="Center" />
+                    <Button x:Name="button_undo" Grid.Column="1" Content="やり直し(N)" HorizontalAlignment="Center" Margin="0" Width="100" VerticalAlignment="Center" Height="40" Click="button_undo_Click" />
+                    <Button x:Name="button_save" Grid.Column="2" Content="保存(S)" HorizontalAlignment="Center" Margin="0" Width="100" VerticalAlignment="Center" Height="40" Click="button_save_Click" />
+                    <Button x:Name="button_next" Grid.Column="3" Content="次へ(X)" HorizontalAlignment="Center" Margin="0" Width="100" VerticalAlignment="Center" Height="40" Click="button_next_Click" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <ScrollViewer>
+                <ListBox x:Name="listBox_files" SelectionChanged="listBox_files_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="10" Height="10" Fill="{Binding IsFinished, UpdateSourceTrigger=PropertyChanged}"></Ellipse>
+                                    <TextBlock Text="{Binding FileName}" Margin="5,0,0,0" FontSize="16" TextWrapping="Wrap"></TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+    
+</Window>
