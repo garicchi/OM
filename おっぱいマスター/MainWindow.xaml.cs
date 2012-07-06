@@ -81,7 +81,11 @@ namespace おっぱいマスター
             objItems.Clear();
             foreach (string s in files)
             {
-                objItems.Add(new ObjViewModel(s));
+                //この拡張子意外は追加しない
+                if (s.Contains(".jpg") || s.Contains(".png") || s.Contains(".gif") || s.Contains(".bmp"))
+                {
+                    objItems.Add(new ObjViewModel(s));
+                }
             }
         }
 
